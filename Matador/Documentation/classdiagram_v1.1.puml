@@ -1,0 +1,56 @@
+@startuml
+
+class Main {
+    - static Game game;
+    + static void main(String[] args)
+}
+
+class Game {
+    - final FileIO fileIO;
+    - final TextUI textUI;
+    - final ArrayList<Player> players;
+    - int startValue;
+    - int maxPlayers;
+    + Game()
+    + void gameSetup()
+    + void displayPlayers()
+    - void createPlayers(ArrayList<String> data)
+}
+
+class Player {
+    - final String name;
+    - final BankAccount bankAccount;
+    + Player(String name, int amount)
+    + String getName()
+    + BankAccount getBankAccount()
+    + void buy(int cost)
+}
+
+class TextUI {
+    - static Scanner scanner;
+    + String getUserInput(String msg)
+    + ArrayList<String> data getUserInput(String msg, int iterations)
+    + int getUserInput(String msg, ArrayList<String> data)
+}
+
+class FileIO {
+    + static void writeGameData(ArrayList<Player> players)
+    + static ArrayList<String> data readGameData()
+}
+
+class BankAccount {
+    - int balance;
+    + BankAccount(int startAmount)
+    + int getBalance()
+    + void doTransaction(int amount)
+}
+
+Main *-- Game
+
+Game *-- "2...6" Player
+Game *-- TextUI
+Game *-- FileIO
+
+Player *-- BankAccount
+
+@enduml

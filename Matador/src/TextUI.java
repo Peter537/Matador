@@ -1,36 +1,30 @@
-/*
-Todo: Tilføj en metode der prompter brugeren for en værdi indtil et max er nået eller brugeren taster q for quit
-
-Lad metoden tage et argument for besked der skal vises hver gang brugeren promptes og et argument for maximum antal gange brugeren skal promptes
-Hver gang brugeren taster et input, skal værdien placeres i en liste af Strings som returnes til allersidst.
-
-
-Alle metoderne i denne klasse skal hedde getUserInput, men de tager forskellige argumenter. Dette kaldes 'overloading'.'
-
-*/
-
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class TextUI {
-    static Scanner scan = new Scanner(System.in);
 
-    //recieves a message and displays it to the user
-    //prompts the user for a reponse
+    private static final Scanner scanner = new Scanner(System.in);
 
-    String getUserInput(String msg){
-        //besked fra systemet
+    /*
+        receives a message and displays it to the user
+        prompts the user for one input value
+        returns the input
+    */
+    public String getUserInput(String msg){
         System.out.println(msg);
-        //svar fra bruger
-        String input = scan.nextLine();
-        return input;
+        return scanner.nextLine();
     }
 
-    ArrayList<String> getUserInput(String msg, int iterations) {
+    /*
+        receives a message and displays it to the user
+        prompts the user for multiple[iterations] input values
+        returns a list of inputs
+    */
+    public ArrayList<String> getUserInput(String msg, int iterations) {
         ArrayList<String> inputs = new ArrayList<>();
         while (iterations > 0) {
             System.out.println(msg);
-            String input = scan.nextLine();
+            String input = scanner.nextLine();
             if (input.equalsIgnoreCase("q")) {
                 break;
             }
@@ -40,16 +34,17 @@ public class TextUI {
         return inputs;
     }
 
-
-    public int getUserChoice(ArrayList<String> arr){
-        String msg =  "Du har følgende valgmuligheder";
+    /*
+        receives a message and displays it to the user
+        displays a list of options
+        prompts the user for one input value
+        returns the input
+    */
+    public int getUserInput(String msg, ArrayList<String> arr){
         System.out.println(msg);
-     
-        for(int i = 0; i<arr.size(); i++){
-
-            System.out.println(i+1+". "+arr.get(i));
+        for (int i = 0; i < arr.size(); i++) {
+            System.out.println((i + 1) + ". " + arr.get(i));
         }
-        int choice = scan.nextInt();
-        return choice;
+        return scanner.nextInt();
     }
 }

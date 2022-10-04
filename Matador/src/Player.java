@@ -1,40 +1,30 @@
-
-
 public class Player {
-    String name;
-    int amount;
+
+    private final String name;
+    private final BankAccount bankAccount;
 
     public Player(String name, int amount) {
         this.name = name;
-        this.amount = amount;
+        this.bankAccount = new BankAccount(amount);
     }
 
-    public Player(String name) {
-        this.name = name;
-        this.amount = 0;
+    public void buy(int cost) {
+        bankAccount.doTransaction(-cost);
     }
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public int getAmount() {
-        return amount;
-    }
-
-    public void setAmount(int amount) {
-        this.amount = amount;
+    public BankAccount getBankAccount() {
+        return bankAccount;
     }
 
     @Override
     public String toString() {
         return "Player{" +
-                "name='" + name + '\'' +
-                ", amount=" + amount +
+                "name='" + getName() + '\'' +
+                ", bankAccount=" + getBankAccount() +
                 '}';
     }
 }

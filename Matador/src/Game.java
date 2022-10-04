@@ -1,13 +1,12 @@
 import java.util.ArrayList;
-import java.util.Optional;
 
 public class Game {
 
-    FileIO fileIO = new FileIO();
-    TextUI textUI = new TextUI();
+    private final FileIO fileIO = new FileIO();
+    private final TextUI textUI = new TextUI();
     private int startValue = 30000;
     private int maxPlayers = 6;
-    private ArrayList<Player> players = new ArrayList<>();
+    private final ArrayList<Player> players = new ArrayList<>();
 
     public Game() {
 
@@ -16,32 +15,32 @@ public class Game {
     public void gameSetup() {
         ArrayList<String> data = fileIO.readGameData();
         // tjek om der er spildata
-        if (data == null) {
+        if (data.isEmpty()) {
             // ellers start en dialog med brugeren
-            System.out.println("");
             data = textUI.getUserInput("Skriv spillernavn. Tast Q for at quitte", maxPlayers);
-
         }
-
         createPlayers(data);
     }
 
     public void createPlayers(ArrayList<String> data) {
         for (String s : data) {
             String[] values = s.split(",");
-            int amount = startValue;
+            int balance = startValue;
             if (values.length > 1) {
-                amount = Integer.parseInt(values[1]);
+                balance = Integer.parseInt(values[1].trim());
             }
-            Player p = new Player(values[0], amount);
+            Player p = new Player(values[0], balance);
             players.add(p);
         }
     }
 
-    public void showPlayers() {
+    public ArrayList<Player> getPlayers() {
+        return players;
+    }
+
+    public void displayPlayers() {
         for (Player p : players) {
             System.out.println(p);
         }
     }
-
 }

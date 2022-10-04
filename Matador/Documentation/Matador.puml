@@ -1,0 +1,58 @@
+@startuml
+
+object Game
+object Player
+object BankAccount
+object Board
+object Die
+object Piece
+object Card
+object Bank
+
+object Field
+object Property
+object Prison
+object Tax
+object Start
+object Chance
+object Parking
+object Building
+object Deed
+object ShippingLine
+object Brewery
+
+object Plot
+object Business
+
+Game *-- Bank
+Game *-- Board
+Game *-- "2...6" Player
+Game *-- Card
+
+Player *-- BankAccount
+Player *-- Piece
+Player *-- Deed
+
+Board *-- "40" Field
+Board *-- "2" Die
+Board *-- Piece
+
+Field <|-- Property
+Field <|-- Prison
+Field <|-- Tax
+Field <|-- Start
+Field <|-- Chance
+Field <|-- Parking
+Field <|-- Building
+Field <|-- Deed
+
+Property <|-- Business
+Property <|-- Plot
+Property *-- Deed
+
+Business <|-- ShippingLine
+Business <|-- Brewery
+
+Plot *-- Building
+
+@enduml

@@ -1,4 +1,0 @@
-Egon,3000
-Kjeld,330
-Benny,50
-Peter

@@ -1,9 +1,12 @@
 public class Main {
 
+    private static final Game game = new Game();
+
     public static void main(String[] args) {
         // write your code here
-        Game game = new Game();
         game.gameSetup();
-        game.showPlayers();
+        game.displayPlayers();
+
+
     }
 }
