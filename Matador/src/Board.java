@@ -1,10 +1,9 @@
 public class Board {
 
-    private final Dice dice;
+    private final Dice dice = new Dice();
     private final Field[] fields = new Field[40];
 
     public Board(String[] data) {
-        dice = new Dice();
         createFields(data);
     }
 
@@ -21,10 +20,6 @@ public class Board {
     }
 
     public Field getField(int id) {
-        id--;
-        if (id >= fields.length || id < 0) {
-            return null;
-        }
-        return fields[id];
+        return ((id - 1) >= fields.length || (id - 1 < 0)) ? fields[id - 1] : null;
     }
 }
