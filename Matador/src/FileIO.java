@@ -32,4 +32,19 @@ public class FileIO {
             e.printStackTrace();
         }
     }
+
+    public String[] readBoardData() {
+        String[] values = new String[40];
+        try {
+            Scanner input = new Scanner(new File("Data\\boarddata.csv"));
+            input.nextLine(); // Ignore header
+            for (int i = 0; i < 40; i++) {
+                values[i] = input.nextLine();
+            }
+            return values;
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 }

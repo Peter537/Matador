@@ -7,6 +7,7 @@ public class Game {
     private int startValue = 30000;
     private int maxPlayers = 6;
     private final ArrayList<Player> players = new ArrayList<>();
+    private Board board;
 
     public Game() {
 
@@ -20,8 +21,24 @@ public class Game {
             data = textUI.getUserInput("Skriv spillernavn. Tast Q for at quitte", maxPlayers);
         }
         createPlayers(data);
-        //players.get(0).buy(4000);
-        //fileIO.writeGameData(players);
+
+        //******************************************************
+        // Load af felt data og bygge boardet
+        //******************************************************
+        String[] fieldData = fileIO.readBoardData();
+        board = new Board(fieldData);
+
+        runGame();
+    }
+
+    public void runGame() {
+        Player currentPlayer = players.get(0);
+        System.out.println("Before: " + currentPlayer.getPosition());
+        int result = board.getDice().rollDiceSum();
+        int newPos = currentPlayer.updatePosition(result);
+        System.out.println("After: " + currentPlayer.getPosition());
+        Field field = board.getField(newPos);
+        System.out.println(field.onLand());
     }
 
     public void createPlayers(ArrayList<String> data) {

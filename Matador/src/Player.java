@@ -2,6 +2,7 @@ public class Player {
 
     private final String name;
     private final BankAccount bankAccount;
+    private int position = 1;
 
     public Player(String name, int amount) {
         this.name = name;
@@ -18,6 +19,15 @@ public class Player {
 
     public BankAccount getBankAccount() {
         return bankAccount;
+    }
+
+    public int getPosition() {
+        return position;
+    }
+
+    public int updatePosition(int diceValue) {
+        position += diceValue;
+        return position;
     }
 
     @Override

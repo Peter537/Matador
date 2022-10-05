@@ -16,10 +16,6 @@ public class Field {
         this.owner = owner;
     }
 
-    public String onLand() {
-        return "Du er landet på " + ID + " " + label;
-    }
-
     public String getLabel() {
         return label;
     }
@@ -46,6 +42,10 @@ public class Field {
 
     public void setOwner(Player owner) {
         this.owner = owner;
+    }
+
+    public String onLand() {
+        return "Du er landet på " + ID + " " + label;
     }
 
     @Override
