@@ -11,7 +11,7 @@ public class Board {
         for (String s : data) {
             String[] values = s.split(",");
             int ID = Integer.parseInt(values[0].trim());
-            String label = values[1].trim();
+            String label = values[1];
             int cost = Integer.parseInt(values[2].trim());
             int income = Integer.parseInt(values[3].trim());
             int seriesID = Integer.parseInt(values[4].trim());

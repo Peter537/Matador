@@ -20,8 +20,8 @@ public class Game {
             data = textUI.getUserInput("Skriv spillernavn. Tast Q for at quitte", maxPlayers);
         }
         createPlayers(data);
-        players.get(0).buy(4000);
-        fileIO.writeGameData(players);
+        //players.get(0).buy(4000);
+        //fileIO.writeGameData(players);
     }
 
     public void createPlayers(ArrayList<String> data) {
