@@ -6,18 +6,6 @@ import java.util.Scanner;
 
 public class FileIO {
 
-    public static void writeGameData(ArrayList<Player> players) {
-        try {
-            FileWriter writer = new FileWriter("Data\\gamedata.csv");
-            for (Player p : players) {
-                writer.write(p.getName() + "," + p.getBankAccount().getBalance() +"\n");
-            }
-            writer.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
     public ArrayList<String> readGameData() {
         ArrayList<String> values = new ArrayList<>();
         try {
@@ -30,5 +18,18 @@ public class FileIO {
         } catch (FileNotFoundException ignored) {
         }
         return null;
+    }
+
+    public void writeGameData(ArrayList<Player> players) {
+        try {
+            FileWriter writer = new FileWriter("Data\\gamedata.csv");
+            writer.write("# name, balance\n");
+            for (Player p : players) {
+                writer.write(p.getName() + ", " + p.getBankAccount().getBalance() +"\n");
+            }
+            writer.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

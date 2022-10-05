@@ -20,6 +20,8 @@ public class Game {
             data = textUI.getUserInput("Skriv spillernavn. Tast Q for at quitte", maxPlayers);
         }
         createPlayers(data);
+        players.get(0).buy(4000);
+        fileIO.writeGameData(players);
     }
 
     public void createPlayers(ArrayList<String> data) {
@@ -34,13 +36,13 @@ public class Game {
         }
     }
 
-    public ArrayList<Player> getPlayers() {
-        return players;
-    }
-
     public void displayPlayers() {
         for (Player p : players) {
             System.out.println(p);
         }
+    }
+
+    public ArrayList<Player> getPlayers() {
+        return players;
     }
 }
