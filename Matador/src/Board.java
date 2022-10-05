@@ -20,6 +20,10 @@ public class Board {
     }
 
     public Field getField(int id) {
-        return ((id - 1) >= fields.length || (id - 1 < 0)) ? fields[id - 1] : null;
+        id--;
+        if (id < 0 || id >= fields.length) {
+            return null;
+        }
+        return fields[id];
     }
 }
