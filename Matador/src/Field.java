@@ -1,58 +1,61 @@
+/* TODO: Make this class a super class by...
+    1. removing attributes that are not common to ALL field types (cost, income, seriesID, owner)
+    2. adding onLand, onReject and processResonse methods
+*
+*
+* */
 public class Field {
 
-    private final String label;
-    private final int ID;
-    private final int cost;
-    private final int income;
-    private final int seriesID;
-    private Player owner;
+    protected String label;
+    protected int id;
+    protected int cost;
+    protected int income;
 
-    public Field(int ID, String label, int cost, int income, int seriesID, Player owner) {
+    public Field(int id, String label, int cost, int income, int seriesID) {
         this.label = label;
-        this.ID = ID;
+        this.id = id;
         this.cost = cost;
         this.income = income;
-        this.seriesID = seriesID;
-        this.owner = owner;
+        //this.seriesID = seriesID;
     }
 
-    public String getLabel() {
-        return label;
+    public Field(int id, String label, int cost, int income) {
+        this.label = label;
+        this.id = id;
+        this.cost = cost;
+        this.income = income;
+    }
+
+    protected String getLabel() {
+        return this.label;
     }
 
     public int getID() {
-        return ID;
+        return id;
     }
 
-    public int getCost() {
-        return cost;
-    }
-
-    public int getIncome() {
-        return income;
-    }
-
-    public int getSeriesID() {
-        return seriesID;
-    }
-
-    public Player getOwner() {
-        return owner;
-    }
-
-    public void setOwner(Player owner) {
-        this.owner = owner;
-    }
-
-    public String onLand() {
-        return "Du er landet på " + ID + " " + label;
+    public String onLand(Player p) {
+        return p.getName() + " er landet på " + this;
     }
 
     @Override
     public String toString() {
-        return "Field{" +
-                "ID='" + ID + '\'' +
-                ", label=" + label +
-                '}';
+        return id + ": " + label;
+    }
+
+    public void processChoice(String choice, Player p) {
+        if (choice.equalsIgnoreCase("J")) {
+            onAccept(p);
+        } else {
+            onReject(p);
+        }
+    }
+
+    protected String onAccept(Player p) {
+        return "";
+    }
+
+    protected String onReject(Player p) {
+        return "";
     }
 }

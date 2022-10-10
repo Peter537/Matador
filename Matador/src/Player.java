@@ -27,6 +27,10 @@ public class Player {
 
     public int updatePosition(int diceValue) {
         position += diceValue;
+        if (position > 40) {
+            position -= 40;
+            //bankAccount.doTransaction(4000);
+        }
         return position;
     }
 

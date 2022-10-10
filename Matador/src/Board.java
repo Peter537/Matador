@@ -10,13 +10,54 @@ public class Board {
     private void createFields(String[] data) {
         for (String s : data) {
             String[] values = s.split(",");
-            int ID = Integer.parseInt(values[0].trim());
-            String fieldType = values[1]; // Bruges ikke pt.
+            /*TODO: Instantiate subclasses of Field based on data. (No field is just a field)
+               1. add a switch-case that looks at the type of the field to be created
+               2. create the subclasses need to instiate based on the type of field. (constructor, attributes and override onString and onLand methods)
+            *
+            *  PSEUDO CODE:
+            *
+            *  Field f = null;
+            *  switch(values[1])
+            *  case "plot": f = new Plot(...)
+            *
+            */
+            int id = Integer.parseInt(values[0].trim());
+            String fieldType = values[1];
             String label = values[2];
             int cost = Integer.parseInt(values[3].trim());
             int income = Integer.parseInt(values[4].trim());
             int seriesID = Integer.parseInt(values[5].trim());
-            fields[ID - 1] = new Field(ID, label, cost, income, seriesID, null);
+            Field f;
+            switch (fieldType) {
+                case "plot":
+                    f = new Plot(id, label, cost, income, seriesID);
+                    break;
+                case "lykkefelt":
+                    f = new Chance(id, label, cost, income);
+                    break;
+                    /*
+                case "fængsel":
+                    f = new Jail(id, label, cost, income, seriesID);
+                    break;
+                case "start":
+                    f = new Start(id, label, cost, income, seriesID);
+                    break;
+                case "skat":
+                    f = new Tax(id, label, cost, income, seriesID);
+                    break;
+                case "parkering":
+                    f = new Parking(id, label, cost, income, seriesID);
+                    break;
+                    */
+                default:
+                    f = new Field(id, label, cost, income);
+                    break;
+            }
+
+            fields[id - 1] = f;
+            // startfelt, plot, lykkefelt, tax, rederi, jail, brewery, parking, extraTax
+
+            //fields[ID - 1] = new Field(ID, label, cost, income, seriesID, null);
         }
     }
 

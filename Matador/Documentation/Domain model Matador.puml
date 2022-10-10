@@ -1,58 +1,57 @@
 @startuml
+'https://plantuml.com/object-diagram
 
 object Game
 object Player
 object BankAccount
-object Board
 object Die
-object Piece
 object Card
-object Bank
+
+object Piece
+object Board
 
 object Field
 object Property
 object Prison
 object Tax
+object Parking
 object Start
 object Chance
-object Parking
-object Building
-object Deed
+
 object ShippingLine
 object Brewery
 
-object Plot
-object Business
+object Building
+object Deed
+object Bank
 
-Game *-- Bank
+
 Game *-- Board
-Game *-- "2...6" Player
+Game *-- "2..6" Player
 Game *-- Card
-
-Player *-- BankAccount
-Player *-- Piece
-Player *-- Deed
-
-Board *-- "40" Field
-Board *-- "2" Die
 Board *-- Piece
-
+Player *-- Piece
+Player *-- BankAccount
+Board *-- "2" Die
+Board *-- "40" Field : has-a
+Field <|-- Start : is - a
 Field <|-- Property
-Field <|-- Prison
-Field <|-- Tax
-Field <|-- Start
-Field <|-- Chance
-Field <|-- Parking
-Field <|-- Building
-Field <|-- Deed
-
 Property <|-- Business
 Property <|-- Plot
+Plot *-- Building
 Property *-- Deed
-
+Player *-- Deed
 Business <|-- ShippingLine
 Business <|-- Brewery
 
-Plot *-- Building
+
+Field <|-- Chance
+Field <|-- Parking
+Field <|-- Tax
+Field <|-- Prison
+
+
+
+
 
 @enduml

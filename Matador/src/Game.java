@@ -8,6 +8,7 @@ public class Game {
     private int maxPlayers = 6;
     private final ArrayList<Player> players = new ArrayList<>();
     private Board board;
+    private Player currentPlayer;
 
     public Game() {
 
@@ -31,14 +32,44 @@ public class Game {
         runGame();
     }
 
+    /* TODO: Increase modularity for readability in this class by...
+    1. moving the code that rolls the dice and moves the player to a method called throwAndMove()
+    2. moving the code that calls the onLand method to a method called landAndAct()
+    3. limit the code in runGame to run a game loop, where..
+    3.a the next player is found
+    3.b the user is prompted to either continue or quit the game
+    *
+    * */
+
     public void runGame() {
-        Player currentPlayer = players.get(0);
-        System.out.println("Before: " + currentPlayer.getPosition());
+        String input = "";
+        int count = 0;
+        while (!input.equalsIgnoreCase("Q")) {
+            currentPlayer = players.get(count % players.size());
+            throwAndMove();
+            input = textUI.getUserInput("Continue (C) or Quit (Q)?");
+            count++;
+            /* Bruger modulo til at finde den næste spiller i listen
+            if (count == players.size()) {
+                count = 0;
+            }
+            */
+        }
+
+    }
+
+    private void throwAndMove() {
+        System.out.println("Det er " + currentPlayer.getName() + "'s tur.\n" + currentPlayer.getName() + " står på felt " + currentPlayer.getPosition() + ".");
         int result = board.getDice().rollDiceSum();
         int newPos = currentPlayer.updatePosition(result);
-        System.out.println("After: " + currentPlayer.getPosition());
-        Field field = board.getField(newPos);
-        System.out.println(field.onLand());
+        Field f = board.getField(newPos);
+        landAndAct(f);
+    }
+
+    private void landAndAct(Field f) {
+        String msg = f.onLand(currentPlayer);
+        String choice = textUI.getUserInput(msg);
+        f.processChoice(choice, currentPlayer);
     }
 
     public void createPlayers(ArrayList<String> data) {
@@ -59,7 +90,19 @@ public class Game {
         }
     }
 
+    public void saveData() {
+        fileIO.writeGameData(players);
+    }
+
     public ArrayList<Player> getPlayers() {
         return players;
+    }
+
+    public FileIO getFileIO() {
+        return fileIO;
+    }
+
+    public TextUI getTextUI() {
+        return textUI;
     }
 }

@@ -9,7 +9,7 @@ ID, FieldType, Label, Cost, Income, seriesID
 8,lykkefelt,Prøv Lykken,0,0,2
 9,plot,Valby Langgade,2000,100,4
 10,plot,Allégade,2400,150,4
-11,jail,Going To Jail,0,0,5
+11,jail,På Besøg,0,0,5
 12,plot,Frederiksberg alle,2800,200,6
 13,brewery,Coca Cola,3000,500,7
 14,plot,Bülowsvej,2800,200,6
@@ -29,7 +29,7 @@ ID, FieldType, Label, Cost, Income, seriesID
 28,plot,Kgs. Nytorv,5200,450,10
 29,brewery,Faxe Kondi,3000,500,7
 30,plot,Østergade,5600,500,10
-31,jail,Going To Jail,0,0,5
+31,jail,Du fængsles,0,0,5
 32,plot,Amagertorv,5000,550,11
 33,plot,Vimmelskaftet,6000,550,11
 34,lykkefelt,Prøv Lykken,0,0,2
