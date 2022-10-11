@@ -6,10 +6,10 @@
 * */
 public class Field {
 
-    protected String label;
-    protected int id;
+    private String label;
+    private int id;
     protected int cost;
-    protected int income;
+    private int income;
 
     public Field(int id, String label, int cost, int income, int seriesID) {
         this.label = label;
@@ -43,12 +43,14 @@ public class Field {
         return id + ": " + label;
     }
 
-    public void processChoice(String choice, Player p) {
+    public String processChoice(String choice, Player p) {
+        String s = "";
         if (choice.equalsIgnoreCase("J")) {
-            onAccept(p);
+            s = onAccept(p);
         } else {
-            onReject(p);
+            s = onReject(p);
         }
+        return s;
     }
 
     protected String onAccept(Player p) {

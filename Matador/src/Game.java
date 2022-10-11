@@ -62,14 +62,18 @@ public class Game {
         System.out.println("Det er " + currentPlayer.getName() + "'s tur.\n" + currentPlayer.getName() + " står på felt " + currentPlayer.getPosition() + ".");
         int result = board.getDice().rollDiceSum();
         int newPos = currentPlayer.updatePosition(result);
-        Field f = board.getField(newPos);
+        //Field f = board.getField(newPos);
+        Field f = board.getField(5);
         landAndAct(f);
     }
 
     private void landAndAct(Field f) {
-        String msg = f.onLand(currentPlayer);
-        String choice = textUI.getUserInput(msg);
-        f.processChoice(choice, currentPlayer);
+        System.out.println("Du har 1: " + currentPlayer.getBankAccount().getBalance());
+        String optionMsg = f.onLand(currentPlayer);
+        String choice = textUI.getUserInput(optionMsg);
+        String msg = f.processChoice(choice, currentPlayer);
+        textUI.displayMessage(msg);
+        System.out.println("Du har 2: " + currentPlayer.getBankAccount().getBalance());
     }
 
     public void createPlayers(ArrayList<String> data) {

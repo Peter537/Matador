@@ -13,6 +13,10 @@ public class Player {
         bankAccount.doTransaction(-cost);
     }
 
+    public void pay(int amount) {
+        bankAccount.doTransaction(-amount);
+    }
+
     public String getName() {
         return name;
     }

@@ -11,7 +11,7 @@ public class TextUI {
         returns the input
     */
     public String getUserInput(String msg){
-        System.out.println(msg);
+        displayMessage(msg);
         return scanner.nextLine();
     }
 
@@ -23,7 +23,7 @@ public class TextUI {
     public ArrayList<String> getUserInput(String msg, int iterations) {
         ArrayList<String> inputs = new ArrayList<>();
         while (iterations > 0) {
-            System.out.println(msg);
+            displayMessage(msg);
             String input = scanner.nextLine();
             if (input.equalsIgnoreCase("q")) {
                 break;
@@ -41,10 +41,14 @@ public class TextUI {
         returns the input
     */
     public int getUserInput(String msg, ArrayList<String> arr){
-        System.out.println(msg);
+        displayMessage(msg);
         for (int i = 0; i < arr.size(); i++) {
             System.out.println((i + 1) + ". " + arr.get(i));
         }
         return scanner.nextInt();
+    }
+
+    public void displayMessage(String msg) {
+        System.out.println(msg);
     }
 }

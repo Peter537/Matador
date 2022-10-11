@@ -36,7 +36,7 @@ public class Board {
                     f = new Chance(id, label, cost, income);
                     break;
                 case "tax":
-                    f = new Tax(id, label, cost, income, seriesID);
+                    f = new Tax(id, label, cost, income);
                     break;
                     /*
                 case "jail":
