@@ -35,17 +35,26 @@ public class Board {
                 case "lykkefelt":
                     f = new Chance(id, label, cost, income);
                     break;
-                    /*
-                case "fængsel":
-                    f = new Jail(id, label, cost, income, seriesID);
-                    break;
-                case "start":
-                    f = new Start(id, label, cost, income, seriesID);
-                    break;
-                case "skat":
+                case "tax":
                     f = new Tax(id, label, cost, income, seriesID);
                     break;
-                case "parkering":
+                    /*
+                case "jail":
+                    f = new Jail(id, label, cost, income, seriesID);
+                    break;
+                case "startfelt":
+                    f = new Start(id, label, cost, income, seriesID);
+                    break;
+                case "extraTax":
+                    f = new ExtraTax?Tax?(id, label, cost, income, seriesID);
+                    break;
+                case "brewery":
+                    f = new Brewery(id, label, cost, income, seriesID);
+                    break;
+                case "rederi":
+                    f = new (id, label, cost, income, seriesID);
+                    break;
+                case "parking":
                     f = new Parking(id, label, cost, income, seriesID);
                     break;
                     */
