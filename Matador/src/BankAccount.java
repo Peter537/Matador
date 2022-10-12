@@ -7,6 +7,7 @@ public class BankAccount {
     }
 
     public void doTransaction(int amount) {
+        // tjek om der er penge til rådighed
         balance += amount;
     }
 

@@ -59,21 +59,23 @@ public class Game {
     }
 
     private void throwAndMove() {
-        System.out.println("Det er " + currentPlayer.getName() + "'s tur.\n" + currentPlayer.getName() + " står på felt " + currentPlayer.getPosition() + ".");
+        System.out.println("Det er " + currentPlayer.getName() + "'s tur.\n"
+                + currentPlayer.getName() + " har lige nu " + currentPlayer.getBankAccount().getBalance() + " kr.\n"
+                + currentPlayer.getName() + " står på felt " + currentPlayer.getPosition() + ".");
         int result = board.getDice().rollDiceSum();
+        result = 5;
         int newPos = currentPlayer.updatePosition(result);
-        //Field f = board.getField(newPos);
-        Field f = board.getField(5);
+        Field f = board.getField(newPos);
         landAndAct(f);
+
+        textUI.displayMessage(currentPlayer.getName() + " har lige nu " + currentPlayer.getBankAccount().getBalance() + " kr.\n");
     }
 
     private void landAndAct(Field f) {
-        System.out.println("Du har 1: " + currentPlayer.getBankAccount().getBalance());
         String optionMsg = f.onLand(currentPlayer);
         String choice = textUI.getUserInput(optionMsg);
         String msg = f.processChoice(choice, currentPlayer);
         textUI.displayMessage(msg);
-        System.out.println("Du har 2: " + currentPlayer.getBankAccount().getBalance());
     }
 
     public void createPlayers(ArrayList<String> data) {

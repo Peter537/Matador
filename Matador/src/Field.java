@@ -11,13 +11,6 @@ public class Field {
     protected int cost;
     private int income;
 
-    public Field(int id, String label, int cost, int income, int seriesID) {
-        this.label = label;
-        this.id = id;
-        this.cost = cost;
-        this.income = income;
-        //this.seriesID = seriesID;
-    }
 
     public Field(int id, String label, int cost, int income) {
         this.label = label;
@@ -32,6 +25,14 @@ public class Field {
 
     public int getID() {
         return id;
+    }
+
+    public int getIncome() {
+        return income;
+    }
+
+    public int getCost() {
+        return cost;
     }
 
     public String onLand(Player p) {

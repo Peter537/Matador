@@ -27,41 +27,17 @@ public class Board {
             int cost = Integer.parseInt(values[3].trim());
             int income = Integer.parseInt(values[4].trim());
             int seriesID = Integer.parseInt(values[5].trim());
-            Field f;
-            switch (fieldType) {
-                case "plot":
-                    f = new Plot(id, label, cost, income, seriesID);
-                    break;
-                case "lykkefelt":
-                    f = new Chance(id, label, cost, income);
-                    break;
-                case "tax":
-                    f = new Tax(id, label, cost, income);
-                    break;
-                    /*
-                case "jail":
-                    f = new Jail(id, label, cost, income, seriesID);
-                    break;
-                case "startfelt":
-                    f = new Start(id, label, cost, income, seriesID);
-                    break;
-                case "extraTax":
-                    f = new ExtraTax?Tax?(id, label, cost, income, seriesID);
-                    break;
-                case "brewery":
-                    f = new Brewery(id, label, cost, income, seriesID);
-                    break;
-                case "rederi":
-                    f = new (id, label, cost, income, seriesID);
-                    break;
-                case "parking":
-                    f = new Parking(id, label, cost, income, seriesID);
-                    break;
-                    */
-                default:
-                    f = new Field(id, label, cost, income);
-                    break;
-            }
+            Field f = switch (fieldType) {
+                case "plot" -> new Plot(id, label, cost, income, seriesID);
+                case "lykkefelt" -> new Chance(id, label, cost, income);
+                case "tax" -> new Tax(id, label, cost, income);
+                case "jail" -> new Jail(id, label, cost);
+                case "startfelt" -> new Start(id, label, cost, income);
+                case "parking" -> new Parking(id, label);
+                case "visit" -> new Visit(id, label);
+                case "rederi", "brewery" -> new Business(id, label, cost, income, seriesID);
+                default -> new Field(id, label, cost, income);
+            };
 
             fields[id - 1] = f;
             // startfelt, plot, lykkefelt, tax, rederi, jail, brewery, parking, extraTax

@@ -1,43 +1,24 @@
-public class Plot extends Field {
-
-    private final int seriesID;
-    private Player owner;
-    private String option;
+public class Plot extends Property {
 
     public Plot(int ID, String label, int cost, int income, int seriesID) {
-        super(ID, label, cost, income);
-        this.seriesID = seriesID;
+        super(ID, label, cost, income, seriesID);
     }
 
-    @Override
-    public String toString() {
-        return super.toString() + " tilhører serie " + seriesID;
-    }
+    /*
+    boolean monopoly = false;
 
     @Override
     public String onLand(Player p) {
-        String s = super.onLand(p) + "\n";
-        if (this.owner == null) {
-            option = "buy";
-            s += "Vil du købe " + this.getLabel() + "? Tast J for ja, N for nej.";
-        } /*else {
-            s += "Du skal betale " + this.owner.getName() + " " + this.income + " for at lande på " + this.getLabel();
-        }*/
-        return s;
-    }
-
-    @Override
-    protected String onAccept(Player p) {
-        String s = "";
-        if (option.equalsIgnoreCase("buy")) {
-            s = "Grunden er din!";
-            p.buy(this.cost);
+        if (this.getOwner() == p) {
+            String s = "";
+            if (monopoly) {
+                s = "1";
+            } else {
+                s = "2";
+            }
+            return s;
         }
-        return s;
+        return super.onLand(p);
     }
-
-    @Override
-    protected String onReject(Player p) {
-        return "";
-    }
+    */
 }

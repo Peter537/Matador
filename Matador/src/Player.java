@@ -1,8 +1,12 @@
+import java.util.ArrayList;
+
 public class Player {
 
     private final String name;
     private final BankAccount bankAccount;
     private int position = 1;
+    private final ArrayList<Field> deeds = new ArrayList<>();
+
 
     public Player(String name, int amount) {
         this.name = name;
@@ -17,6 +21,15 @@ public class Player {
         bankAccount.doTransaction(-amount);
     }
 
+    public void pay(Player p, int amount) {
+        bankAccount.doTransaction(-amount);
+        p.getBankAccount().doTransaction(amount);
+    }
+
+    public void receive(int amount) {
+        bankAccount.doTransaction(amount);
+    }
+
     public String getName() {
         return name;
     }
@@ -29,10 +42,15 @@ public class Player {
         return position;
     }
 
+    public void addDeed(Field field) {
+        deeds.add(field);
+    }
+
     public int updatePosition(int diceValue) {
         position += diceValue;
         if (position > 40) {
             position -= 40;
+            //this.receive(board.getField(1).getIncome()); // Pseudokode for hvor mange penge man får
             //bankAccount.doTransaction(4000);
         }
         return position;

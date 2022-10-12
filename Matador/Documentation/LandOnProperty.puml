@@ -1,0 +1,38 @@
+@startuml
+
+(*) --> "Land on Property"
+if "Is owned by player?" then
+-->[Yes] "Is current Player"
+    if "Current player has monopoly?" then
+        --> [True] "Do you want to build?"
+        if "Want to build?" then
+            --> [Yes] "Build"
+            --> "End turn"
+        else
+            --> [No] "End turn"
+        endif
+    else
+        --> [False] "End turn"
+    endif
+    else
+    -->[Yes] "Can pay rent?"
+
+        if "Can pay rent?" then
+            -->[Yes] "Pay rent"
+            --> "End turn"
+        else
+            -->[No] "Go bankrupt"
+            --> "Remove from game"
+            --> "End turn"
+        endif
+else
+  -->[No] "Want to buy?"
+    if "Can afford?" then
+        -->[Yes] "Buy property"
+        --> "End turn"
+    else
+        -->[No] "Auction property"
+        --> "End turn"
+    endif
+
+@enduml
