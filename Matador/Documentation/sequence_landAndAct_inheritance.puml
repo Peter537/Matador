@@ -1,7 +1,7 @@
 @startuml
 'https://plantuml.com/sequence-diagram
 
-'autonumber
+autonumber
 participant Game as game
 participant TextUI as ui
 participant Player as player
@@ -10,10 +10,10 @@ participant FieldSubclass  as sub
 
 game -> game : landAndAct(f)
 game -> sub : String optionMessage = f.onLand(player)
-sub --> field : super.onLand()
+sub --> field : super.onLand(player)
 game -> ui : String choice = getUserInput( optionMsg )
-ui -> ui : displayMessage( optionMsg )
-game -> field : String msg = f.processesChoice(player, choice )
+ui -> ui : displayMessage()
+game -> field : String msg = f.processChoice(player, choice )
 alt response (A)ccept
     field -> sub : onAccept(player)
 else response (R)eject

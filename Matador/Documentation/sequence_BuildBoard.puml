@@ -3,8 +3,8 @@
 
 autonumber
 
-Game -> FileIO: readBoardData()
-FileIO --> Game: String[] data
+Game -> FileIO: String[] data = readBoardData()
+
 Game -> Board : new(data)
 Board -> Board : createFields()
 Board -> Field : new()

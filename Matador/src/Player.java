@@ -6,6 +6,7 @@ public class Player {
     private final BankAccount bankAccount;
     private int position = 1;
     private final ArrayList<Field> deeds = new ArrayList<>();
+    /*TODO: tilføj en liste til at holde på det spilleren har købt (jvf. Task 1.c)*/
 
 
     public Player(String name, int amount) {
@@ -13,7 +14,9 @@ public class Player {
         this.bankAccount = new BankAccount(amount);
     }
 
+    /*TODO: udvid metoden sådan at den tager en instans af type Property. Denne instans skal lægges i deeds */
     public void buy(int cost) {
+        //add deed to deeds
         bankAccount.doTransaction(-cost);
     }
 
@@ -40,10 +43,6 @@ public class Player {
 
     public int getPosition() {
         return position;
-    }
-
-    public void addDeed(Field field) {
-        deeds.add(field);
     }
 
     public int updatePosition(int diceValue) {

@@ -5,6 +5,11 @@ public class Tax extends Field {
     }
 
     @Override
+    public String onLand(Player p) {
+        return super.onLand(p) + "\nDu skal betale skat. Tast J for fast beløb: " + cost + ", ellers tager vi 10% af dine aktiver.";
+    }
+
+    @Override
     public String onAccept(Player p) {
         p.pay(cost);
         return p.getName() + " har betalt " + cost + " kr. i skat.";
@@ -15,10 +20,5 @@ public class Tax extends Field {
         float calcTax = p.getBankAccount().getBalance() * 0.1f;
         p.pay((int) calcTax);
         return "Vi har trukket 10% af dine aktiver";
-    }
-
-    @Override
-    public String onLand(Player p) {
-        return super.onLand(p) + "\nDu skal betale skat. Tast J for fast beløb: " + cost + ", ellers tager vi 10% af dine aktiver.";
     }
 }

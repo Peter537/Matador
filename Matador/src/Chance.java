@@ -5,8 +5,16 @@ public class Chance extends Field {
 
     @Override
     public String onLand(Player p) {
-        return super.onLand(p) + "\nTræk et kort fra bunken";
+        String s = super.onLand(p);
+        s+= "\n Træk et kort fra bunken. (Tast J): ";
+
+        return s;
     }
 
+    //Todo:implementer denne metode sådan at der bliver trukket et kort fra bunken (se Task 2.b)
+    public String onAccept(){
+
+        return "";
+    }
 
 }

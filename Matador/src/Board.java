@@ -3,6 +3,14 @@ public class Board {
     private final Dice dice = new Dice();
     private final Field[] fields = new Field[40];
 
+    /*
+     * TODO:
+     *   - udvid konstruktoren (jvf. Task 2.d)
+     *   - tilføj statiske felter (jvf. Task 2.e, 2.f)
+     *   - tilføj statisk metode (jvf. Task 2.g)
+     *
+     * */
+
     public Board(String[] data) {
         createFields(data);
     }
@@ -10,17 +18,7 @@ public class Board {
     private void createFields(String[] data) {
         for (String s : data) {
             String[] values = s.split(",");
-            /*TODO: Instantiate subclasses of Field based on data. (No field is just a field)
-               1. add a switch-case that looks at the type of the field to be created
-               2. create the subclasses need to instiate based on the type of field. (constructor, attributes and override onString and onLand methods)
-            *
-            *  PSEUDO CODE:
-            *
-            *  Field f = null;
-            *  switch(values[1])
-            *  case "plot": f = new Plot(...)
-            *
-            */
+
             int id = Integer.parseInt(values[0].trim());
             String fieldType = values[1];
             String label = values[2];

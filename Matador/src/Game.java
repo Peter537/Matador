@@ -4,8 +4,6 @@ public class Game {
 
     private final FileIO fileIO = new FileIO();
     private final TextUI textUI = new TextUI();
-    private int startValue = 30000;
-    private int maxPlayers = 6;
     private final ArrayList<Player> players = new ArrayList<>();
     private Board board;
     private Player currentPlayer;
@@ -15,11 +13,12 @@ public class Game {
     }
 
     public void gameSetup() {
+        //**********************
+        // Load af spiller data
+        // **********************
         ArrayList<String> data = fileIO.readGameData();
-        // tjek om der er spildata
         if (data.isEmpty()) {
-            // ellers start en dialog med brugeren
-            data = textUI.getUserInput("Skriv spillernavn. Tast Q for at quitte", maxPlayers);
+            data = textUI.getUserInput("Skriv spillernavn. Tast Q for at quitte", 6);
         }
         createPlayers(data);
 
@@ -27,19 +26,20 @@ public class Game {
         // Load af felt data og bygge boardet
         //******************************************************
         String[] fieldData = fileIO.readBoardData();
+
+        /*TODO: tilføj en linie der minder om den lige oven over.
+           Her skal der dog loades Chance-kort data istedet for felt data (jvf. Task 2.d)
+         * */
+
+
+
+        /*TODO: ændr dette konstruktor kald til Board, sådan at  Chance-kort data kommer med som argument (jvf. Task 2.d) */
+
         board = new Board(fieldData);
 
         runGame();
     }
 
-    /* TODO: Increase modularity for readability in this class by...
-    1. moving the code that rolls the dice and moves the player to a method called throwAndMove()
-    2. moving the code that calls the onLand method to a method called landAndAct()
-    3. limit the code in runGame to run a game loop, where..
-    3.a the next player is found
-    3.b the user is prompted to either continue or quit the game
-    *
-    * */
 
     public void runGame() {
         String input = "";
@@ -81,7 +81,7 @@ public class Game {
     public void createPlayers(ArrayList<String> data) {
         for (String s : data) {
             String[] values = s.split(",");
-            int balance = startValue;
+            int balance = 30000;
             if (values.length > 1) {
                 balance = Integer.parseInt(values[1].trim());
             }

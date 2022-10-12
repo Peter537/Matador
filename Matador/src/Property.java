@@ -4,6 +4,8 @@ public class Property extends Field {
     private Player owner;
     private String option;
 
+    boolean monopoly = false; // bruges i Plot.onLand() til at bestemme om der skal vises tilbud om at bygge
+
     public Property(int id, String label, int cost, int income, int serieID) {
         super(id, label, cost, income);
         this.serieID = serieID;
@@ -36,7 +38,8 @@ public class Property extends Field {
         if (option.equalsIgnoreCase("buy")) {
             s = this.getLabel() + " er din!";
             p.buy(this.cost);
-            p.addDeed(this);
+            //save deed hos spilleren
+            //p.addDeed(this);
             setOwner(p);
         } else if (option.equalsIgnoreCase("payRent")) {
             s = "Du har betalt " + this.getIncome()+ " til " + this.owner.getName() + " i husleje.";
