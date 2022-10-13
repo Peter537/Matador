@@ -26,14 +26,7 @@ public class Game {
         // Load af felt data og bygge boardet
         //******************************************************
         String[] fieldData = fileIO.readBoardData();
-
-        /*TODO: tilføj en linie der minder om den lige oven over.
-           Her skal der dog loades Chance-kort data istedet for felt data (jvf. Task 2.d)
-         * */
-
         ArrayList<String> chanceData = fileIO.readChanceData();
-
-        /*TODO: ændr dette konstruktor kald til Board, sådan at  Chance-kort data kommer med som argument (jvf. Task 2.d) */
 
         board = new Board(fieldData, chanceData);
 
