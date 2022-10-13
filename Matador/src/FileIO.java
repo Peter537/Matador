@@ -50,4 +50,19 @@ public class FileIO {
         }
         return null;
     }
+
+    public ArrayList<String> readChanceData() {
+        ArrayList<String> values = new ArrayList<>();
+        try {
+            Scanner input = new Scanner(new File("Data\\chancedata.csv"));
+            input.nextLine(); // Ignore header
+            for (int i = 0; i < 10; i++) {
+                values.add(input.nextLine());
+            }
+            return values;
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 }

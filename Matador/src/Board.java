@@ -1,7 +1,11 @@
+import java.util.ArrayList;
+
 public class Board {
 
     private final Dice dice = new Dice();
     private final Field[] fields = new Field[40];
+    private static final ArrayList<ChanceCard> chanceCards = new ArrayList<>();
+    private static int chanceCardIndex = 0;
 
     /*
      * TODO:
@@ -11,8 +15,9 @@ public class Board {
      *
      * */
 
-    public Board(String[] data) {
+    public Board(String[] data, ArrayList<String> chanceCardData) {
         createFields(data);
+        createChanceCards(chanceCardData);
     }
 
     private void createFields(String[] data) {
@@ -38,9 +43,17 @@ public class Board {
             };
 
             fields[id - 1] = f;
-            // startfelt, plot, lykkefelt, tax, rederi, jail, brewery, parking, extraTax
+        }
+    }
 
-            //fields[ID - 1] = new Field(ID, label, cost, income, seriesID, null);
+    private void createChanceCards(ArrayList<String> data) {
+        for (String s : data) {
+            String[] values = s.split(",");
+            String label = values[0];
+            int amount = Integer.parseInt(values[1].trim());
+            int type = Integer.parseInt(values[2].trim());
+            ChanceCard c = new ChanceCard(label, amount, type);
+            chanceCards.add(c);
         }
     }
 
@@ -51,5 +64,18 @@ public class Board {
 
     public Dice getDice() {
         return dice;
+    }
+
+    public Field[] getFields() {
+        return fields;
+    }
+
+    public static ArrayList<ChanceCard> getChanceCards() {
+        return chanceCards;
+    }
+
+    public static ChanceCard getChanceCard() {
+        chanceCardIndex++;
+        return chanceCards.get(chanceCardIndex % chanceCards.size());
     }
 }

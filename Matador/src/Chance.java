@@ -12,9 +12,13 @@ public class Chance extends Field {
     }
 
     //Todo:implementer denne metode sådan at der bliver trukket et kort fra bunken (se Task 2.b)
-    public String onAccept(){
-
-        return "";
+    public String onAccept(Player p){
+        ChanceCard card = Board.getChanceCard();
+        if (card.getCost() > 0){
+            p.pay(card.getCost());
+        } else {
+            p.receive(card.getIncome());
+        }
+        return "Du trak chancekortet " + card.getName() + (card.getCost() > 0 ? " og skal betale " + card.getCost() + " kr." : " og modtager " + card.getIncome() + " kr.");
     }
-
 }

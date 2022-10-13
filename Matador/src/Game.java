@@ -31,11 +31,11 @@ public class Game {
            Her skal der dog loades Chance-kort data istedet for felt data (jvf. Task 2.d)
          * */
 
-
+        ArrayList<String> chanceData = fileIO.readChanceData();
 
         /*TODO: ændr dette konstruktor kald til Board, sådan at  Chance-kort data kommer med som argument (jvf. Task 2.d) */
 
-        board = new Board(fieldData);
+        board = new Board(fieldData, chanceData);
 
         runGame();
     }
@@ -63,7 +63,7 @@ public class Game {
                 + currentPlayer.getName() + " har lige nu " + currentPlayer.getBankAccount().getBalance() + " kr.\n"
                 + currentPlayer.getName() + " står på felt " + currentPlayer.getPosition() + ".");
         int result = board.getDice().rollDiceSum();
-        result = 4;
+        result = 2;
         int newPos = currentPlayer.updatePosition(result);
         Field f = board.getField(newPos);
         landAndAct(f);

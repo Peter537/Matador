@@ -1,0 +1,11 @@
+String name, int cost, int income
+Skat, 1000, 0
+Støtte fra statten, 0, 1000
+Vundet i lotto, 0, 10000
+Tabt i casino, 2000, 0
+Gave fra ven, 0, 1000
+Gave fra familie, 0, 1000
+Ridse i bilen, 200, 0
+Extra skat, 2000, 0
+Kop kaffe, 100, 0
+Top-skat, 5000, 0
