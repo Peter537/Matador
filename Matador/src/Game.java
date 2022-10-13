@@ -63,7 +63,7 @@ public class Game {
                 + currentPlayer.getName() + " har lige nu " + currentPlayer.getBankAccount().getBalance() + " kr.\n"
                 + currentPlayer.getName() + " står på felt " + currentPlayer.getPosition() + ".");
         int result = board.getDice().rollDiceSum();
-        result = 5;
+        result = 4;
         int newPos = currentPlayer.updatePosition(result);
         Field f = board.getField(newPos);
         landAndAct(f);

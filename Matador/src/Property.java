@@ -38,8 +38,7 @@ public class Property extends Field {
         if (option.equalsIgnoreCase("buy")) {
             s = this.getLabel() + " er din!";
             p.buy(this.cost);
-            //save deed hos spilleren
-            //p.addDeed(this);
+            p.addDeed(this);
             setOwner(p);
         } else if (option.equalsIgnoreCase("payRent")) {
             s = "Du har betalt " + this.getIncome()+ " til " + this.owner.getName() + " i husleje.";
