@@ -7,14 +7,6 @@ public class Board {
     private static final ArrayList<ChanceCard> chanceCards = new ArrayList<>();
     private static int chanceCardIndex = 0;
 
-    /*
-     * TODO:
-     *   - udvid konstruktoren (jvf. Task 2.d)
-     *   - tilføj statiske felter (jvf. Task 2.e, 2.f)
-     *   - tilføj statisk metode (jvf. Task 2.g)
-     *
-     * */
-
     public Board(String[] data, ArrayList<String> chanceCardData) {
         createFields(data);
         createChanceCards(chanceCardData);

@@ -18,5 +18,4 @@ public class Jail extends Field {
     public String onReject(Player p) {
         return super.onReject(p) + "\nGå i fængsel";
     }
-
 }

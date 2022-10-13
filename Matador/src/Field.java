@@ -11,7 +11,6 @@ public class Field {
     protected int cost;
     private int income;
 
-
     public Field(int id, String label, int cost, int income) {
         this.label = label;
         this.id = id;

@@ -11,7 +11,6 @@ public class Chance extends Field {
         return s;
     }
 
-    //Todo:implementer denne metode sådan at der bliver trukket et kort fra bunken (se Task 2.b)
     public String onAccept(Player p){
         ChanceCard card = Board.getChanceCard();
         if (card.getCost() > 0){

@@ -18,5 +18,4 @@ public class Parking extends Field {
     public String onReject(Player p) {
         return super.onReject(p) + "\nGratis parkering";
     }
-
 }

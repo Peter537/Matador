@@ -15,5 +15,4 @@ public class Dice {
         int[] dice = rollDice();
         return dice[0] + dice[1];
     }
-
 }
