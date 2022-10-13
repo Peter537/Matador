@@ -41,10 +41,10 @@ public class Board {
     private void createChanceCards(ArrayList<String> data) {
         for (String s : data) {
             String[] values = s.split(",");
-            String label = values[0];
-            int amount = Integer.parseInt(values[1].trim());
-            int type = Integer.parseInt(values[2].trim());
-            ChanceCard c = new ChanceCard(label, amount, type);
+            String name = values[0];
+            int cost = Integer.parseInt(values[1].trim());
+            int income = Integer.parseInt(values[2].trim());
+            ChanceCard c = new ChanceCard(name, cost, income);
             chanceCards.add(c);
         }
     }
