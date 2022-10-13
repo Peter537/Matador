@@ -37,6 +37,18 @@ public class Game {
     public void runGame() {
         String input = "";
         int count = 0;
+
+        //Test: Egon starter med at købe et par grunde til hhv. 2000 og 8000 kr, og modtager nogle penge //Nu kan det testes at der trækkes det rigtige i skat hvis han siger nej til at betale det faste beløb
+        Field somePlot = board.getField(6);//et rederi
+        players.get(0).buy(somePlot.cost);
+        players.get(0).addDeed((Property)somePlot);
+
+        somePlot = board.getField(40);//rådhuspladsen
+        players.get(0).buy(somePlot.cost);
+        players.get(0).addDeed((Property)somePlot);
+
+        players.get(0).receive(20000);//med denne linje modtager Egon et beløb uden skøde
+
         while (!input.equalsIgnoreCase("Q")) {
             currentPlayer = players.get(count % players.size());
             throwAndMove();
@@ -56,7 +68,7 @@ public class Game {
                 + currentPlayer.getName() + " har lige nu " + currentPlayer.getBankAccount().getBalance() + " kr.\n"
                 + currentPlayer.getName() + " står på felt " + currentPlayer.getPosition() + ".");
         int result = board.getDice().rollDiceSum();
-        result = 2;
+        result = 4;
         int newPos = currentPlayer.updatePosition(result);
         Field f = board.getField(newPos);
         landAndAct(f);
