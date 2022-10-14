@@ -40,12 +40,10 @@ public class Game {
 
         //Test: Egon starter med at købe et par grunde til hhv. 2000 og 8000 kr, og modtager nogle penge //Nu kan det testes at der trækkes det rigtige i skat hvis han siger nej til at betale det faste beløb
         Field somePlot = board.getField(6);//et rederi
-        players.get(0).buy(somePlot.cost);
-        players.get(0).addDeed((Property)somePlot);
+        players.get(0).buy((Property) somePlot);
 
         somePlot = board.getField(40);//rådhuspladsen
-        players.get(0).buy(somePlot.cost);
-        players.get(0).addDeed((Property)somePlot);
+        players.get(0).buy((Property) somePlot);
 
         players.get(0).receive(20000);//med denne linje modtager Egon et beløb uden skøde
 
