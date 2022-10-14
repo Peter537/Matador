@@ -6,8 +6,6 @@ public class Player {
     private final BankAccount bankAccount;
     private int position = 1;
     private final ArrayList<Property> deeds = new ArrayList<>();
-    /*TODO: tilføj en liste til at holde på det spilleren har købt (jvf. Task 1.c)*/
-
 
     public Player(String name, int amount) {
         this.name = name;
@@ -18,6 +16,11 @@ public class Player {
     public void buy(int cost) {
         //add deed to deeds
         bankAccount.doTransaction(-cost);
+    }
+
+    public void buy(Property property) {
+        bankAccount.doTransaction(-property.getCost());
+        addDeed(property);
     }
 
     public void pay(int amount) {
@@ -61,8 +64,8 @@ public class Player {
 
     public int getPropertyValues() {
         int propertyValues = 0;
-        for (Property d : deeds) {
-            propertyValues += d.getCost();
+        for (Property property : deeds) {
+            propertyValues += property.getCost();
         }
         return propertyValues;
     }

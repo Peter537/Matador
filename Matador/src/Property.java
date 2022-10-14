@@ -37,8 +37,7 @@ public class Property extends Field {
         String s = "";
         if (option.equalsIgnoreCase("buy")) {
             s = this.getLabel() + " er din!";
-            p.buy(this.cost);
-            p.addDeed(this);
+            p.buy(this);
             setOwner(p);
         } else if (option.equalsIgnoreCase("payRent")) {
             s = "Du har betalt " + this.getIncome()+ " til " + this.owner.getName() + " i husleje.";
