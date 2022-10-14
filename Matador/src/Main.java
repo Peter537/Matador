@@ -4,6 +4,7 @@ public class Main {
 
     public static void main(String[] args) {
         game.gameSetup();
+        game.runGame();
         //game.displayPlayers();
         game.saveData();
     }

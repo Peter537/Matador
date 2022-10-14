@@ -29,23 +29,12 @@ public class Game {
         ArrayList<String> chanceData = fileIO.readChanceData();
 
         board = new Board(fieldData, chanceData);
-
-        runGame();
     }
 
 
     public void runGame() {
         String input = "";
         int count = 0;
-
-        //Test: Egon starter med at købe et par grunde til hhv. 2000 og 8000 kr, og modtager nogle penge //Nu kan det testes at der trækkes det rigtige i skat hvis han siger nej til at betale det faste beløb
-        Field somePlot = board.getField(6);//et rederi
-        players.get(0).buy((Property) somePlot);
-
-        somePlot = board.getField(40);//rådhuspladsen
-        players.get(0).buy((Property) somePlot);
-
-        players.get(0).receive(20000);//med denne linje modtager Egon et beløb uden skøde
 
         while (!input.equalsIgnoreCase("Q")) {
             currentPlayer = players.get(count % players.size());
@@ -113,5 +102,13 @@ public class Game {
 
     public TextUI getTextUI() {
         return textUI;
+    }
+
+    public Board getBoard() {
+        return board;
+    }
+
+    public Player getCurrentPlayer() {
+        return currentPlayer;
     }
 }
