@@ -61,15 +61,15 @@ public class Property extends Field {
     }
 
 
-    public int getSerieID() {
+    protected int getSerieID() {
         return serieID;
     }
 
-    public Player getOwner() {
+    protected Player getOwner() {
         return owner;
     }
 
-    public void setOwner(Player owner) {
+    protected void setOwner(Player owner) {
         this.owner = owner;
     }
 }
