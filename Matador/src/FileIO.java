@@ -53,7 +53,7 @@ public class FileIO {
         try {
             Scanner input = new Scanner(new File("Data\\chancedata.csv"));
             input.nextLine(); // Ignore header
-            for (int i = 0; i < 10; i++) {
+            while (input.hasNextLine()) {
                 values.add(input.nextLine());
             }
             return values;
